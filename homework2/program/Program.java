@@ -74,22 +74,23 @@ public class Program {
         uinput.close();
         // поскольку функция pow возвращает 0^0=0, что не соответствует условию задачи,
         // обработаем этот случай явно.
-        double result = 0;
+        String result;
         if (a == 0 && b == 0) {
-            printMessage("не определено");
+            result = "не определено";
         } else {
             // если степень отрицательная, то результат равен 1/a^b
             if (b < 0) {
-                result = 1 / pow(a, -b);
+                result = Double.toString(1 / pow(a, -b));
             } else {
-                result = pow(a, b);
+                result = Double.toString(pow(a, b));
             }
-            printMessage("Результат: " + result);
         }
+        printMessage("Результат: " + result);
+        // пишем результат в файл
         if (userChoice == 2) {
             File outFile = new File("./homework2/program/output.txt");
             try (FileWriter writer = new FileWriter(outFile, false);) {
-                writer.write(Double.toString(result));
+                writer.write(result);
             } catch (IOException ex) {
 
                 System.out.println(ex.getMessage());

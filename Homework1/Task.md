@@ -1,4 +1,3 @@
-## **Домашнее задание №1** https://github.com/Malussapiens/ProgJavaHw/tree/main/Homework1/program
 ***Задача:** Написать программу вычисления n-ого треугольного числа.*
 
 **Решение.**
