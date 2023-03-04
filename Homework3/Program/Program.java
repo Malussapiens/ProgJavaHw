@@ -11,27 +11,42 @@ public class Program {
         return arr;
     }
 
+    // Сортировка слиянием (рекурсивная)
+    static int[] mergeSort(int[] arr) {
+        if (arr.length < 2) {
+            return arr;
+        }
+
+        // делим исходный массив пополам и вызываем слияние массивов-половинок
+        int begin = 0;
+        int end = arr.length;
+        int middle = arr.length / 2;
+        int[] leftArr = Arrays.copyOfRange(arr, begin, middle);
+        int[] rightArr = Arrays.copyOfRange(arr, middle, end);
+        return mergeArrays(mergeSort(leftArr), mergeSort(rightArr));
+    }
+
         // функция слияния отсортированных массивов
         static int[] mergeArrays(int[] arr1, int[] arr2) {
             int begin1 = 0;
             int begin2 = 0;
-            int[] merged = new int[arr1.length + arr2.length];
-            for (int i = 0; i < merged.length; i++) {
+            int[] mergedArr = new int[arr1.length + arr2.length];
+            for (int i = 0; i < mergedArr.length; i++) {
                 if (begin1 < arr1.length && begin2 < arr2.length) {
                     if (arr1[begin1] < arr2[begin2]) {
-                        merged[i] = arr1[begin1++];
+                        mergedArr[i] = arr1[begin1++];
                     } else {
-                        merged[i] = arr2[begin2++];
+                        mergedArr[i] = arr2[begin2++];
                     }
                 } else {
                     if (begin1 < arr1.length) {
-                        merged[i] = arr1[begin1++];
+                        mergedArr[i] = arr1[begin1++];
                     } else {
-                        merged[i] = arr2[begin2++];
+                        mergedArr[i] = arr2[begin2++];
                     }
                 }
             }
-            return merged;
+            return mergedArr;
         }
 
     public static void main(String[] args) {
