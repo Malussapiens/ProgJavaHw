@@ -11,49 +11,33 @@ public class Program {
         return arr;
     }
 
-    // Сортировка слиянием (рекурсивная)
-    static int[] mergeSort(int[] arr) {
-        if (arr.length < 2) {
-            return arr;
-        }
-
-        // делим исходный массив пополам и вызываем слияние массивов-половинок
-        int begin = 0;
-        int end = arr.length;
-        int middle = arr.length / 2;
-        int[] left = Arrays.copyOfRange(arr, begin, middle);
-        int[] right = Arrays.copyOfRange(arr, middle, end);
-        return mergeArrays(mergeSort(left), mergeSort(right));
-    }
-
-    // функция слияния отсортированных массивов
-    static int[] mergeArrays(int[] arr1, int[] arr2) {
-        int begin1 = 0;
-        int begin2 = 0;
-        int[] merged = new int[arr1.length + arr2.length];
-        for (int i = 0; i < merged.length; i++) {
-            if (begin1 < arr1.length && begin2 < arr2.length) {
-                if (arr1[begin1] < arr2[begin2]) {
-                    merged[i] = arr1[begin1++];
+        // функция слияния отсортированных массивов
+        static int[] mergeArrays(int[] arr1, int[] arr2) {
+            int begin1 = 0;
+            int begin2 = 0;
+            int[] merged = new int[arr1.length + arr2.length];
+            for (int i = 0; i < merged.length; i++) {
+                if (begin1 < arr1.length && begin2 < arr2.length) {
+                    if (arr1[begin1] < arr2[begin2]) {
+                        merged[i] = arr1[begin1++];
+                    } else {
+                        merged[i] = arr2[begin2++];
+                    }
                 } else {
-                    merged[i] = arr2[begin2++];
-                }
-            } else {
-                if (begin1 < arr1.length) {
-                    merged[i] = arr1[begin1++];
-                } else {
-                    merged[i] = arr2[begin2++];
+                    if (begin1 < arr1.length) {
+                        merged[i] = arr1[begin1++];
+                    } else {
+                        merged[i] = arr2[begin2++];
+                    }
                 }
             }
+            return merged;
         }
-        return merged;
-    }
 
     public static void main(String[] args) {
         int arrLen = 20;
         int[] arr = getRandomArrayInt(arrLen, 1, 100);
         
         System.out.println(Arrays.toString(arr));
-        System.out.println(Arrays.toString(mergeSort(arr)));
     }
 }
