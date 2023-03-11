@@ -5,4 +5,6 @@
 
 ## **Домашнее задание №3** https://github.com/Malussapiens/ProgJavaHw/tree/main/Homework3/Program
 
-## **Домашнее задание №3** https://github.com/Malussapiens/ProgJavaHw/tree/main/homework4/Program
+## **Домашнее задание №4** https://github.com/Malussapiens/ProgJavaHw/tree/main/homework4/Program
+
+## **Домашнее задание №5** https://github.com/Malussapiens/ProgJavaHw/tree/main/homework5
