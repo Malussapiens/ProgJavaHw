@@ -2,11 +2,15 @@ package Homework5;
 public class App {
     public static void main(String[] args) {
       var map = getMap();
-      // System.out.println(rawData(getMap()));
-      System.out.println(mapColor(getMap()));
+      System.out.println(mapDraw(map));
     }
   
     static int[][] getMap() {
+      // карта является матрицей значений
+      // -1 - препятствие (стена)
+      //  0 - пустое пространство (проход)
+      // -2 - стартовая ячейка маршрута
+      // -3 - конечная ячейка маршрута
       return new int[][] {
           { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 },
           { -1, 00, 00, 00, -1, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, -1 },
@@ -26,36 +30,23 @@ public class App {
       };
     }
   
-    static String rawData(int[][] map) {
+      static String mapDraw(int[][] map) {
       StringBuilder sb = new StringBuilder();
-  
-      for (int row = 0; row < map.length; row++) {
-        for (int col = 0; col < map[row].length; col++) {
-          sb.append(String.format("%5d", map[row][col]));
-        }
-        sb.append("\n");
-      }
-  
-      return sb.toString();
-    }
-  
-    static String mapColor(int[][] map) {
-      StringBuilder sb = new StringBuilder();
-  
+        // формирует карту (символьную)
       for (int row = 0; row < map.length; row++) {
         for (int col = 0; col < map[row].length; col++) {
           switch (map[row][col]) {
             case 0:
-              sb.append(" ");
+              sb.append(" "); // пустое место
               break;
             case -1:
-              sb.append("*");
+              sb.append("*"); // препятствие
               break;
             case -2:
-              sb.append("Р");
+              sb.append("S"); //старт
               break;
             case -3:
-              sb.append("E");
+              sb.append("F"); // финиш
               break;
             default:
               break;
@@ -63,6 +54,7 @@ public class App {
         }
         sb.append("\n");
       }
+      // формирует отступ
       for (int i = 0; i < 3; i++) {
         sb.append("\n");
       }
@@ -70,6 +62,3 @@ public class App {
     }
   }
   
-  // 1. Р“РµРЅРµСЂР°С‚РѕСЂ РєР°СЂС‚
-  // 2. РџСЂРёРЅС‚РµСЂ РєР°СЂС‚
-  // 3. ...
